@@ -8,8 +8,8 @@ description: Gère l'Instagram (et TikTok) de @hairbysd, coiffeuse à domicile �
 ## Qui est la marque
 - **@hairbysd** (Instagram + TikTok), coiffeuse **à domicile à Genève** (pas de salon : elle se déplace chez la cliente).
 - Spécialités, par ordre de priorité :
-  1. **Extensions de cheveux** — technique **Weft** (tissage de bandes cousues) et **bandes adhésives** (tape-in). C'est le cœur de l'activité : ~60 % des posts.
-  2. **Lissages** (brésilien / tanin / kératine selon ce qu'elle propose).
+  1. **Extensions de cheveux** — **Weft** (Medusa Weft, Butterfly Weft : pose invisible sans colle et sans chaleur ; ex. 200 g, 55-65 cm) et **Tape-ins** (bandes adhésives). C'est le cœur de l'activité : ~60 % des posts.
+  2. **Lissages dernière génération** : **indien**, **spiruline**, **Ruby**.
   3. **Soins botox capillaires** (soin profond réparateur, **sans injection**, rien de médical).
 - Cible : femmes 20-45 ans, Genève et environs (Carouge, Lancy, Meyrin, Vernier, Nyon, Annemasse / Genevois français).
 - Ton : chaleureux, expert, rassurant, féminin, pas vulgaire. **Tutoiement** partout (hooks et légendes).
@@ -22,6 +22,7 @@ description: Gère l'Instagram (et TikTok) de @hairbysd, coiffeuse à domicile �
 4. **Soins botox** : préciser que c'est un soin capillaire sans injection ; aucune promesse médicale ni « résultat garanti ».
 5. Pas de faux avis, pas de faux chiffres (« 500 clientes ») sauf s'ils viennent de Sarah.
 6. Prix : seulement ceux que Sarah donne. Monnaie : CHF.
+7. Bio Instagram actuelle : « LISSAGE & EXTENSION GENÈVE 🎀 » — emoji signature 🎀, rappeler que **l'acompte est obligatoire**.
 
 ## Ressources techniques
 - **Metricool** : brandId / blogId `8072600`, fuseau `Europe/Zurich`, réseaux `instagram` et `tiktok`.

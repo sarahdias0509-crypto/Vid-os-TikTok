@@ -38,12 +38,12 @@ export const services: Service[] = [
   {
     id: "weft-pose",
     category: "extensions",
-    name: "Pose extensions Weft",
-    description: "Tissage de bandes cousues sur rangs d'anneaux, rendu naturel et plat. Cheveux inclus selon la longueur.",
+    name: "Pose extensions Weft (Medusa Weft)",
+    description: "Pose invisible sans colle et sans chaleur, sur rangs d'anneaux. Rendu naturel, volume et longueur sur mesure. Cheveux inclus selon grammage et longueur.",
     durationMin: 180,
-    price: 450,
+    price: 450, // ⚠️ À REMPLACER par ton vrai tarif
     priceFrom: true,
-    deposit: 100,
+    deposit: 100, // ⚠️ À REMPLACER
   },
   {
     id: "weft-remontee",
@@ -51,56 +51,66 @@ export const services: Service[] = [
     name: "Remontée Weft",
     description: "Entretien de tes Weft toutes les 6 à 8 semaines : on remonte les rangs au plus près de la racine.",
     durationMin: 120,
-    price: 180,
-    deposit: 50,
+    price: 180, // ⚠️ À REMPLACER
+    deposit: 50, // ⚠️ À REMPLACER
   },
   {
     id: "adhesives-pose",
     category: "extensions",
-    name: "Pose bandes adhésives",
-    description: "Extensions tape-in ultra fines, invisibles et légères. Cheveux inclus selon la longueur.",
+    name: "Pose extensions Tape-ins (bandes adhésives)",
+    description: "Bandes adhésives ultra fines, invisibles et légères. Cheveux inclus selon la longueur.",
     durationMin: 120,
-    price: 350,
+    price: 350, // ⚠️ À REMPLACER
     priceFrom: true,
-    deposit: 80,
+    deposit: 80, // ⚠️ À REMPLACER
   },
   {
     id: "adhesives-remontee",
     category: "extensions",
-    name: "Remontée bandes adhésives",
+    name: "Remontée Tape-ins",
     description: "Dépose, nettoyage et repose de tes bandes avec adhésif neuf.",
     durationMin: 90,
-    price: 150,
-    deposit: 40,
+    price: 150, // ⚠️ À REMPLACER
+    deposit: 40, // ⚠️ À REMPLACER
   },
   {
     id: "depose",
     category: "extensions",
     name: "Dépose d'extensions",
-    description: "Retrait en douceur de tes extensions (Weft ou adhésives), sans abîmer tes cheveux.",
+    description: "Retrait en douceur de tes extensions (Weft ou Tape-ins), sans abîmer tes cheveux.",
     durationMin: 45,
-    price: 60,
-    deposit: 20,
+    price: 60, // ⚠️ À REMPLACER
+    deposit: 20, // ⚠️ À REMPLACER
   },
   {
-    id: "lissage-bresilien",
+    id: "lissage-indien",
     category: "lissages",
-    name: "Lissage brésilien",
-    description: "Cheveux lisses, brillants et disciplinés jusqu'à 4-5 mois.",
+    name: "Lissage indien",
+    description: "Lissage nouvelle génération : cheveux lisses, brillants et disciplinés pendant des mois.",
     durationMin: 180,
-    price: 250,
+    price: 250, // ⚠️ À REMPLACER
     priceFrom: true,
-    deposit: 60,
+    deposit: 60, // ⚠️ À REMPLACER
   },
   {
-    id: "lissage-tanin",
+    id: "lissage-spiruline",
     category: "lissages",
-    name: "Lissage au tanin",
-    description: "Lissage sans formol, idéal pour cheveux sensibilisés.",
+    name: "Lissage spiruline",
+    description: "Lissage enrichi à la spiruline, nourrissant et respectueux de la fibre.",
     durationMin: 180,
-    price: 230,
+    price: 250, // ⚠️ À REMPLACER
     priceFrom: true,
-    deposit: 60,
+    deposit: 60, // ⚠️ À REMPLACER
+  },
+  {
+    id: "lissage-ruby",
+    category: "lissages",
+    name: "Lissage Ruby",
+    description: "Lissage dernière génération pour un effet miroir et une brillance intense.",
+    durationMin: 180,
+    price: 250, // ⚠️ À REMPLACER
+    priceFrom: true,
+    deposit: 60, // ⚠️ À REMPLACER
   },
   {
     id: "botox",
@@ -108,21 +118,22 @@ export const services: Service[] = [
     name: "Soin botox capillaire",
     description: "Soin profond réparateur (sans injection) : brillance, douceur et cheveux repulpés.",
     durationMin: 90,
-    price: 120,
-    deposit: 30,
+    price: 120, // ⚠️ À REMPLACER
+    deposit: 30, // ⚠️ À REMPLACER
   },
 ];
 
 // ── Horaires ────────────────────────────────────────────────────────────────
 // 0 = dimanche, 1 = lundi … 6 = samedi. null = jour fermé. Heures au format "HH:MM".
 export const openingHours: Record<number, { start: string; end: string } | null> = {
-  0: null,
-  1: { start: "09:00", end: "18:00" },
-  2: { start: "09:00", end: "18:00" },
-  3: { start: "09:00", end: "18:00" },
-  4: { start: "09:00", end: "18:00" },
-  5: { start: "09:00", end: "18:00" },
-  6: { start: "09:00", end: "16:00" },
+  // 24 h/24, 7 j/7 (à la demande de Sarah). Remplace par ex. par { start: "09:00", end: "20:00" } pour limiter.
+  0: { start: "00:00", end: "24:00" },
+  1: { start: "00:00", end: "24:00" },
+  2: { start: "00:00", end: "24:00" },
+  3: { start: "00:00", end: "24:00" },
+  4: { start: "00:00", end: "24:00" },
+  5: { start: "00:00", end: "24:00" },
+  6: { start: "00:00", end: "24:00" },
 };
 
 export const booking = {
