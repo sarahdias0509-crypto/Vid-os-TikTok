@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type Variant = { id: string; label: string; price: number };
 type Svc = {
   id: string; name: string; category: string; durationMin: number;
-  price: number; priceFrom?: boolean; deposit: number; description: string;
+  price: number; priceFrom?: boolean; deposit: number; description: string; variants?: Variant[];
 };
 type Slot = { start: string; services: Svc[] };
 
@@ -29,6 +30,7 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
   const [slots, setSlots] = useState<Slot[] | null>(null);
   const [slot, setSlot] = useState<Slot | null>(null);
   const [svc, setSvc] = useState<Svc | null>(null);
+  const [variantId, setVariantId] = useState<string>("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", address: "", notes: "" });
   const [accept, setAccept] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +57,7 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
     scrollTo(svcRef);
   }
   function pickSvc(s: Svc) {
-    setSvc(s); setError(null);
+    setSvc(s); setVariantId(""); setError(null);
     scrollTo(formRef);
   }
 
@@ -67,7 +69,7 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
       const res = await fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ date, start: slot.start, serviceId: svc.id, ...form }),
+        body: JSON.stringify({ date, start: slot.start, serviceId: svc.id, variantId, ...form }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -82,6 +84,12 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
       setLoading(false);
     }
   }
+
+  const variant = svc?.variants?.find((v) => v.id === variantId) ?? null;
+  const needsVariant = !!svc?.variants?.length;
+  const price = variant ? variant.price : svc?.price ?? 0;
+  const deposit = svc ? Math.min(svc.deposit, price || svc.deposit) : 0;
+  const exact = !needsVariant || !!variant;
 
   const grouped = slot
     ? Object.entries(slot.services.reduce<Record<string, Svc[]>>((acc, s) => ((acc[s.category] ||= []).push(s), acc), {}))
@@ -151,6 +159,15 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
         <div className="panel" ref={formRef}>
           <div className="panel-title"><h2>Tes coordonnées</h2><span className="stepnum">Étape 4 / 4</span></div>
           <form className="form" onSubmit={submit}>
+            {needsVariant && (
+              <div className="field">
+                <label htmlFor="variant">Ton option pour « {svc.name} »</label>
+                <select id="variant" required value={variantId} onChange={(e) => setVariantId(e.target.value)}>
+                  <option value="" disabled>Choisis…</option>
+                  {svc.variants!.map((v) => <option key={v.id} value={v.id}>{v.label} — {chf(v.price)}</option>)}
+                </select>
+              </div>
+            )}
             <div className="row2">
               <div className="field"><label htmlFor="name">Prénom et nom</label>
                 <input id="name" required autoComplete="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></div>
@@ -165,10 +182,10 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
               <textarea id="notes" rows={3} placeholder="Longueur et couleur souhaitées, étage, code d'entrée…" value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} /></div>
 
             <div className="summary" aria-live="polite">
-              <div className="line"><span>{svc.name}</span><span>{svc.priceFrom ? "dès " : ""}{chf(svc.price)}</span></div>
+              <div className="line"><span>{svc.name}{variant ? ` — ${variant.label}` : ""}</span><span>{exact ? "" : "dès "}{chf(price)}</span></div>
               <div className="line small muted"><span>{longDate(date)} à {slot.start}</span><span>{dur(svc.durationMin)}</span></div>
-              <div className="line total"><span>Acompte à payer maintenant</span><span>{chf(svc.deposit)}</span></div>
-              <div className="line small muted"><span>Solde le jour du rendez-vous</span><span>{svc.priceFrom ? "dès " : ""}{chf(svc.price - svc.deposit)}</span></div>
+              <div className="line total"><span>Acompte à payer maintenant</span><span>{chf(deposit)}</span></div>
+              <div className="line small muted"><span>Solde le jour du rendez-vous</span><span>{exact ? "" : "dès "}{chf(price - deposit)}</span></div>
             </div>
 
             <label className="small" style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -177,8 +194,8 @@ export default function BookingFlow({ cancellationPolicy }: { cancellationPolicy
             </label>
 
             {error && <p className="alert alert-error" role="alert">{error}</p>}
-            <button className="btn btn-accent btn-block" disabled={loading || !accept}>
-              {loading ? "Redirection vers le paiement…" : `Payer l'acompte de ${chf(svc.deposit)}`}
+            <button className="btn btn-accent btn-block" disabled={loading || !accept || !exact}>
+              {loading ? "Redirection vers le paiement…" : `Payer l'acompte de ${chf(deposit)}`}
             </button>
             <p className="small muted center">Paiement sécurisé par carte ou TWINT.</p>
           </form>

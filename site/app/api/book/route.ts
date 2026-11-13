@@ -23,10 +23,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Ce créneau vient d'être pris. Choisis-en un autre." }, { status: 409 });
   }
 
+  // Option choisie (longueur, couleur…) : le prix vient toujours de la config, jamais du navigateur.
+  let price = service.price;
+  let serviceName = service.name;
+  if (service.variants?.length) {
+    const v = service.variants.find((x) => x.id === body.variantId);
+    if (!v) return NextResponse.json({ error: "Choisis une option (longueur, couleur…)." }, { status: 400 });
+    price = v.price;
+    serviceName = `${service.name} — ${v.label}`;
+  }
+
   const startMin = toMinutes(start);
   const b = await db().createBookingIfFree({
     date, startMin, endMin: startMin + service.durationMin,
-    serviceId: service.id, serviceName: service.name, price: service.price, deposit: service.deposit,
+    serviceId: service.id, serviceName, price, deposit: Math.min(service.deposit, price),
     ...customer, notes: notes(body.notes),
   });
   if (!b) return NextResponse.json({ error: "Ce créneau vient d'être pris. Choisis-en un autre." }, { status: 409 });

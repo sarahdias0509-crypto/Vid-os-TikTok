@@ -161,3 +161,7 @@ th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; colo
 
 .footer { border-top: 1px solid var(--line); padding: 32px 0 40px; margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
 .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.variants { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 4px; }
+.variants li { display: flex; justify-content: space-between; gap: 10px; }
+.variants li span:last-child { font-weight: 600; white-space: nowrap; }

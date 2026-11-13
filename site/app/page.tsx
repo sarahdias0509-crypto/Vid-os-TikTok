@@ -42,6 +42,12 @@ export default function Home() {
                     <h3>{s.name}</h3>
                     <p className="muted small">{s.description}</p>
                     <span className="chip">{formatDuration(s.durationMin)}</span>
+                    {s.variants && s.variants.length <= 6 && (
+                      <ul className="variants small">
+                        {s.variants.map((v) => <li key={v.id}><span>{v.label}</span><span>{formatChf(v.price)}</span></li>)}
+                      </ul>
+                    )}
+                    {s.variants && s.variants.length > 6 && <p className="small muted" style={{ marginTop: 10 }}>Prix selon longueur (45 à 70 cm) et couleur.</p>}
                     <div className="price-row">
                       <span className="price">{s.priceFrom ? "dès " : ""}{formatChf(s.price)}</span>
                       <span className="small muted">Acompte {formatChf(s.deposit)}</span>

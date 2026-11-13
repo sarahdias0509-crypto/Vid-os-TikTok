@@ -10,8 +10,8 @@ export async function GET(req: Request) {
   if (!date) return NextResponse.json({ days: availableDays(busy, blocked) });
   const slots = slotsForDay(date, busy, blocked).map((s) => ({
     start: s.start,
-    services: s.services.map(({ id, name, category, durationMin, price, priceFrom, deposit, description }) => ({
-      id, name, category, durationMin, price, priceFrom, deposit, description,
+    services: s.services.map(({ id, name, category, durationMin, price, priceFrom, deposit, description, variants }) => ({
+      id, name, category, durationMin, price, priceFrom, deposit, description, variants,
     })),
   }));
   return NextResponse.json({ date, slots });
