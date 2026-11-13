@@ -25,7 +25,6 @@ export async function startBookingPayment(b: Booking, dateLabel: string): Promis
   const session = await stripe().checkout.sessions.create({
     mode: "payment",
     currency: business.currency,
-    payment_method_types: ["card", "twint"],
     customer_email: b.email,
     line_items: [
       {
@@ -64,7 +63,6 @@ export async function startOrderPayment(o: Order): Promise<string> {
   const session = await stripe().checkout.sessions.create({
     mode: "payment",
     currency: business.currency,
-    payment_method_types: ["card", "twint"],
     customer_email: o.email,
     line_items,
     metadata: { kind: "order", id: o.id },

@@ -15,7 +15,7 @@ Pour ajouter une photo à un produit, mets l'image dans `public/produits/` et in
 
 ## Mise en ligne (une seule fois)
 
-1. **Stripe** (paiements) : crée un compte sur stripe.com avec ton activité en Suisse. Active **TWINT** dans *Paramètres › Moyens de paiement*. Récupère la **clé secrète** (`sk_live_…`) dans *Développeurs › Clés API*.
+1. **Stripe** (paiements) : crée un compte sur stripe.com avec ton activité en Suisse. Active **TWINT** (et Apple Pay / Google Pay) dans *Paramètres › Moyens de paiement* : le site propose automatiquement tous les moyens activés compatibles avec le CHF. Récupère la **clé secrète** (`sk_live_…`) dans *Développeurs › Clés API*.
 2. **Base de données** : crée une base Postgres gratuite sur neon.tech et copie son URL de connexion (`postgresql://…`).
 3. **Hébergement** : sur vercel.com, importe le dépôt GitHub et choisis `site` comme *Root Directory*. Renseigne ces variables d'environnement :
    - `SITE_URL` : l'adresse du site, par ex. `https://hairbysd.ch`
