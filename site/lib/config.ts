@@ -61,7 +61,8 @@ export const categoryLabels: Record<ServiceCategory, string> = {
 };
 
 // Tarifs repris des grilles « Price list » de @hairbysd.
-// ⚠️ Les DURÉES et les ACOMPTES sont des estimations à confirmer par Sarah.
+// Durées confirmées par Sarah : pose/repose d'extensions 1 h 30, lissages 4 h, soins botox 3 h 30.
+// ⚠️ Les ACOMPTES (et les durées des déposes, lavage, brushing, soin SOS) restent à confirmer.
 export const services: Service[] = [
   // ── Extensions (cheveux + pose) ──
   withVariants({
@@ -69,7 +70,7 @@ export const services: Service[] = [
     category: "extensions",
     name: "Extensions Tape-ins 200 g (pose incluse)",
     description: "Bandes adhésives ultra fines et invisibles, 200 g de cheveux. Prix selon longueur et couleur. Boucles, wavy ou lissé offert.",
-    durationMin: 150,
+    durationMin: 90,
     deposit: 150,
     variants: extensionGrid({
       45: [470, 500, 530], 50: [500, 550, 570], 55: [520, 580, 600],
@@ -81,7 +82,7 @@ export const services: Service[] = [
     category: "extensions",
     name: "Extensions Weft & Medusa Weft 200 g (pose incluse)",
     description: "Pose invisible sans colle et sans chaleur, 200 g de cheveux. Prix selon longueur et couleur. Boucles, wavy ou lissé offert.",
-    durationMin: 180,
+    durationMin: 90,
     deposit: 150,
     variants: extensionGrid({
       45: [480, 530, 550], 50: [510, 550, 580], 55: [550, 580, 610],
@@ -93,7 +94,7 @@ export const services: Service[] = [
     category: "extensions",
     name: "Pose Tape-ins (tes extensions)",
     description: "Pose de bandes adhésives que tu as déjà. Boucles, wavy ou lissé offert.",
-    durationMin: 120,
+    durationMin: 90,
     deposit: 30,
     variants: [
       { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 100 },
@@ -117,7 +118,7 @@ export const services: Service[] = [
     category: "extensions",
     name: "Pose Weft / Medusa Weft (tes extensions)",
     description: "Pose de tes wefts sur rangs d'anneaux, sans colle et sans chaleur. Boucles, wavy ou lissé offert.",
-    durationMin: 150,
+    durationMin: 90,
     deposit: 30,
     variants: [
       { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 80 },
@@ -175,7 +176,7 @@ export const services: Service[] = [
     category: "lissages",
     name: "Lissage indien",
     description: "Lissage dernière génération : cheveux lisses, brillants et disciplinés pendant des mois.",
-    durationMin: 180,
+    durationMin: 240,
     deposit: 50,
     variants: byLength([200, 220, 250, 280]),
   }),
@@ -184,7 +185,7 @@ export const services: Service[] = [
     category: "lissages",
     name: "Lissage spiruline",
     description: "Lissage enrichi à la spiruline, nourrissant et respectueux de la fibre.",
-    durationMin: 180,
+    durationMin: 240,
     deposit: 50,
     variants: byLength([200, 230, 260, 280]),
   }),
@@ -193,7 +194,7 @@ export const services: Service[] = [
     category: "lissages",
     name: "Lissage Ruby",
     description: "Lissage effet miroir pour une brillance intense.",
-    durationMin: 180,
+    durationMin: 240,
     deposit: 50,
     variants: byLength([220, 250, 280, 300]),
   }),
@@ -202,7 +203,7 @@ export const services: Service[] = [
     category: "lissages",
     name: "Lissage racine + botox longueurs",
     description: "Lissage des racines et soin botox sur les longueurs.",
-    durationMin: 150,
+    durationMin: 240,
     deposit: 50,
     variants: byLength([200, 200, 250, 250]),
   }),
@@ -212,7 +213,7 @@ export const services: Service[] = [
     category: "soins",
     name: "Botox spiruline",
     description: "Soin botox capillaire à la spiruline (sans injection) : brillance, douceur, cheveux repulpés.",
-    durationMin: 90,
+    durationMin: 210,
     price: 120,
     deposit: 30,
   },
@@ -221,7 +222,7 @@ export const services: Service[] = [
     category: "soins",
     name: "Botox lissant",
     description: "Soin botox capillaire (sans injection) à effet lissant et anti-frisottis.",
-    durationMin: 120,
+    durationMin: 210,
     price: 150,
     deposit: 30,
   },

@@ -20,12 +20,13 @@ test("préavis de 24 h : le lendemain commence à 08:00 + 24 h", () => {
   assert.equal(tomorrowLate[0].start, "14:00");
 });
 
-test("une prestation de 3 h ne peut pas commencer après 21:00 (fin de journée 24:00)", () => {
-  const at2100 = servicesFittingAt(WED, toMinutes("21:00"), []).map((s) => s.id);
-  const at2130 = servicesFittingAt(WED, toMinutes("21:30"), []).map((s) => s.id);
-  assert.ok(at2100.includes("weft-200g"));
-  assert.ok(!at2130.includes("weft-200g"));
-  assert.ok(at2130.includes("botox-spiruline"));
+test("un lissage (4 h) ne peut pas commencer après 20:00 (fin de journée 24:00)", () => {
+  const at2000 = servicesFittingAt(WED, toMinutes("20:00"), []).map((s) => s.id);
+  const at2030 = servicesFittingAt(WED, toMinutes("20:30"), []).map((s) => s.id);
+  assert.ok(at2000.includes("lissage-indien"));
+  assert.ok(!at2030.includes("lissage-indien"));
+  assert.ok(at2030.includes("botox-spiruline")); // 3 h 30 : 20:30-24:00
+  assert.ok(!servicesFittingAt(WED, toMinutes("21:00"), []).some((s) => s.id === "botox-spiruline"));
 });
 
 test("dernier créneau de la journée : 23:30, seules les prestations de 30 min tiennent", () => {
@@ -43,7 +44,7 @@ test("une réservation 10:00-13:00 bloque le créneau, avec 30 min de trajet ava
   assert.ok(!starts.includes("09:30"));
   for (const t of ["10:00", "11:00", "12:30", "13:00"]) assert.ok(!starts.includes(t), t);
   assert.ok(starts.includes("13:30"));
-  // à 13:30, la pose Weft (3 h) finit à 16:30 : OK
+  // à 13:30, la pose Weft (1 h 30) finit à 15:00 : OK
   const s1330 = slotsForDay(WED, busy, [], NOW).find((s) => s.start === "13:30")!;
   assert.ok(s1330.services.some((s) => s.id === "weft-200g"));
 });
@@ -51,8 +52,9 @@ test("une réservation 10:00-13:00 bloque le créneau, avec 30 min de trajet ava
 test("prestation longue refusée si elle chevauche un rendez-vous plus tard", () => {
   const busy = [{ date: WED, startMin: toMinutes("14:00"), endMin: toMinutes("15:00") }];
   const at1100 = servicesFittingAt(WED, toMinutes("11:00"), busy).map((s) => s.id);
-  assert.ok(!at1100.includes("weft-200g")); // 11:00-14:00 + 30 min trajet > 14:00
-  assert.ok(at1100.includes("pose-tape")); // 11:00-13:00 + 30 = 13:30 ≤ 14:00
+  assert.ok(!at1100.includes("lissage-indien")); // 11:00-15:00 chevauche 14:00
+  assert.ok(at1100.includes("weft-200g")); // 11:00-12:30 + 30 = 13:00 ≤ 14:00
+  assert.ok(!servicesFittingAt(WED, toMinutes("12:30"), busy).some((s) => s.id === "weft-200g")); // 12:30-14:00 + 30 > 14:00
 });
 
 test("fenêtre de 60 jours", () => {
