@@ -12,7 +12,8 @@ description: Gère l'Instagram (et TikTok) de @hairbysd, coiffeuse à domicile �
   2. **Lissages** (brésilien / tanin / kératine selon ce qu'elle propose).
   3. **Soins botox capillaires** (soin profond réparateur, **sans injection**, rien de médical).
 - Cible : femmes 20-45 ans, Genève et environs (Carouge, Lancy, Meyrin, Vernier, Nyon, Annemasse / Genevois français).
-- Ton : chaleureux, expert, rassurant, féminin, pas vulgaire. **À confirmer avec Sarah : tutoiement ou vouvoiement** (par défaut : vouvoiement dans les légendes, tutoiement possible dans les hooks de Reels).
+- Ton : chaleureux, expert, rassurant, féminin, pas vulgaire. **Tutoiement** partout (hooks et légendes).
+- **Réservation : uniquement par DM Instagram.** Chaque CTA renvoie vers les DM (ex. « Écris-moi "EXTENSIONS" en DM »). Pas de lien, pas de téléphone.
 
 ## Règles non négociables
 1. **Validation obligatoire** : rien n'est publié sans l'accord de Sarah. Dans Metricool, toujours `autoPublish: false` (elle reçoit une notification et publie elle-même). Avant de programmer une semaine, montrer d'abord les posts dans le chat et attendre son OK.
@@ -54,28 +55,28 @@ description: Gère l'Instagram (et TikTok) de @hairbysd, coiffeuse à domicile �
 - « De [cheveux fins / courts] à [longueur de rêve] en [durée] — sans bouger de chez elle 🏡 »
 - « Elle pensait que ses cheveux ne pousseraient jamais… »
 - « Attendez la fin 👀 »
-- « POV : votre coiffeuse vient chez vous et vous repartez avec 20 cm de plus »
+- « POV : ta coiffeuse vient chez toi et tu repars avec 20 cm de plus »
 
 **Éducation**
 - « Weft ou bandes adhésives ? Voici comment choisir en 30 secondes »
-- « 3 erreurs qui abîment vos extensions (la 2e, tout le monde la fait) »
+- « 3 erreurs qui abîment tes extensions (la 2e, tout le monde la fait) »
 - « Combien de temps tiennent vraiment des extensions ? »
-- « Lissage ou soin botox : lequel pour vos cheveux ? »
+- « Lissage ou soin botox : lequel pour tes cheveux ? »
 
 **Objections / curiosité**
-- « Non, les extensions n'abîment pas vos cheveux… si elles sont bien posées »
-- « Ce que personne ne vous dit avant de poser des extensions »
+- « Non, les extensions n'abîment pas tes cheveux… si elles sont bien posées »
+- « Ce que personne ne vous dit avant de te faire poser des extensions »
 - « Le secret des cheveux longs à Genève 🤫 »
 
 **Local / urgence douce**
 - « Coiffeuse extensions à domicile à Genève : il me reste [X] créneaux en [mois] »
-- « Mariage, fêtes, vacances ? Réservez vos extensions 2 semaines avant »
+- « Mariage, fêtes, vacances ? Réserve tes extensions 2 semaines avant »
 
 ## Structure d'une légende
 1. **Hook** (1re ligne, < 125 caractères — c'est ce qui s'affiche avant « plus »).
 2. **Valeur** : 2-4 lignes courtes (technique utilisée, durée, résultat, conseil).
 3. **Preuve / détail** : nombre de bandes, longueur, temps de pose (si Sarah les donne).
-4. **Appel à l'action** : « 📩 Écrivez "EXTENSIONS" en DM pour un devis » / « Réservation en DM » / « Enregistrez ce post pour plus tard ».
+4. **Appel à l'action** : « 📩 Écris-moi "EXTENSIONS" en DM pour ton devis » / « Réservation en DM 💌 » / « Enregistre ce post pour plus tard ».
 5. **Ligne de localisation** : « 📍 À domicile · Genève et environs »
 6. **Hashtags** : 8-15, mélange ci-dessous, en fin de légende (ou en premier commentaire via `firstCommentText`).
 
