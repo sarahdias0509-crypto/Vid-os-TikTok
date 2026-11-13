@@ -63,7 +63,8 @@ export const categoryLabels: Record<ServiceCategory, string> = {
 // Tarifs repris des grilles « Price list » de @hairbysd.
 // Durées confirmées par Sarah : pose/repose d'extensions 1 h 30, lissages 4 h, soins botox 3 h 30.
 // Soin SOS 2 h, dépose + repose Weft 1 h 30.
-// ⚠️ Les ACOMPTES, le prix de la dépose + repose et les durées des déposes, lavage et brushing restent à confirmer.
+// Acomptes confirmés : nouvelle pose avec mèches 250, pose sans mèches 20, dépose 20, lissages 20.
+// ⚠️ À confirmer : acomptes des soins (botox, SOS), prix de la dépose + repose, durées des déposes, lavage et brushing.
 export const services: Service[] = [
   // ── Extensions (cheveux + pose) ──
   withVariants({
@@ -72,7 +73,7 @@ export const services: Service[] = [
     name: "Extensions Tape-ins 200 g (pose incluse)",
     description: "Bandes adhésives ultra fines et invisibles, 200 g de cheveux. Prix selon longueur et couleur. Boucles, wavy ou lissé offert.",
     durationMin: 90,
-    deposit: 150,
+    deposit: 250,
     variants: extensionGrid({
       45: [470, 500, 530], 50: [500, 550, 570], 55: [520, 580, 600],
       60: [540, 600, 630], 65: [580, 630, 650], 70: [600, 650, 680],
@@ -84,7 +85,7 @@ export const services: Service[] = [
     name: "Extensions Weft & Medusa Weft 200 g (pose incluse)",
     description: "Pose invisible sans colle et sans chaleur, 200 g de cheveux. Prix selon longueur et couleur. Boucles, wavy ou lissé offert.",
     durationMin: 90,
-    deposit: 150,
+    deposit: 250,
     variants: extensionGrid({
       45: [480, 530, 550], 50: [510, 550, 580], 55: [550, 580, 610],
       60: [590, 620, 650], 65: [620, 650, 680], 70: [650, 680, 710],
@@ -96,7 +97,7 @@ export const services: Service[] = [
     name: "Pose Tape-ins (tes extensions)",
     description: "Pose de bandes adhésives que tu as déjà. Boucles, wavy ou lissé offert.",
     durationMin: 90,
-    deposit: 30,
+    deposit: 20,
     variants: [
       { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 100 },
       { id: "exterieur", label: "Extensions achetées ailleurs", price: 120 },
@@ -120,7 +121,7 @@ export const services: Service[] = [
     name: "Pose Weft / Medusa Weft (tes extensions)",
     description: "Pose de tes wefts sur rangs d'anneaux, sans colle et sans chaleur. Boucles, wavy ou lissé offert.",
     durationMin: 90,
-    deposit: 30,
+    deposit: 20,
     variants: [
       { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 80 },
       { id: "exterieur", label: "Extensions achetées ailleurs", price: 120 },
@@ -144,7 +145,7 @@ export const services: Service[] = [
     name: "Dépose + repose Weft / Medusa Weft",
     description: "J'enlève tes wefts et je les repose au plus près de la racine. Boucles, wavy ou lissé offert.",
     durationMin: 90,
-    deposit: 30,
+    deposit: 20,
     // ⚠️ Prix provisoire = dépose + pose de la grille. À confirmer par Sarah.
     variants: [
       { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 100 },
@@ -191,7 +192,7 @@ export const services: Service[] = [
     name: "Lissage indien",
     description: "Lissage dernière génération : cheveux lisses, brillants et disciplinés pendant des mois.",
     durationMin: 240,
-    deposit: 50,
+    deposit: 20,
     variants: byLength([200, 220, 250, 280]),
   }),
   withVariants({
@@ -200,7 +201,7 @@ export const services: Service[] = [
     name: "Lissage spiruline",
     description: "Lissage enrichi à la spiruline, nourrissant et respectueux de la fibre.",
     durationMin: 240,
-    deposit: 50,
+    deposit: 20,
     variants: byLength([200, 230, 260, 280]),
   }),
   withVariants({
@@ -209,7 +210,7 @@ export const services: Service[] = [
     name: "Lissage Ruby",
     description: "Lissage effet miroir pour une brillance intense.",
     durationMin: 240,
-    deposit: 50,
+    deposit: 20,
     variants: byLength([220, 250, 280, 300]),
   }),
   withVariants({
@@ -218,7 +219,7 @@ export const services: Service[] = [
     name: "Lissage racine + botox longueurs",
     description: "Lissage des racines et soin botox sur les longueurs.",
     durationMin: 240,
-    deposit: 50,
+    deposit: 20,
     variants: byLength([200, 200, 250, 250]),
   }),
   // ── Soins & extra ──
