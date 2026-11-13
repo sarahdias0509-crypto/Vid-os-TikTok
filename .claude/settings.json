@@ -1,6 +1,5 @@
 {
   "enabledMcpjsonServers": [
-    "playwright",
-    "perplexity"
+    "playwright"
   ]
 }
