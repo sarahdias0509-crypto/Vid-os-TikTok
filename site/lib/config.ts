@@ -62,7 +62,8 @@ export const categoryLabels: Record<ServiceCategory, string> = {
 
 // Tarifs repris des grilles « Price list » de @hairbysd.
 // Durées confirmées par Sarah : pose/repose d'extensions 1 h 30, lissages 4 h, soins botox 3 h 30.
-// ⚠️ Les ACOMPTES (et les durées des déposes, lavage, brushing, soin SOS) restent à confirmer.
+// Soin SOS 2 h, dépose + repose Weft 1 h 30.
+// ⚠️ Les ACOMPTES, le prix de la dépose + repose et les durées des déposes, lavage et brushing restent à confirmer.
 export const services: Service[] = [
   // ── Extensions (cheveux + pose) ──
   withVariants({
@@ -135,6 +136,19 @@ export const services: Service[] = [
     variants: [
       { id: "hairbysd", label: "Extensions posées par Hair by SD", price: 20 },
       { id: "exterieur", label: "Extensions posées ailleurs", price: 30 },
+    ],
+  }),
+  withVariants({
+    id: "depose-repose-weft",
+    category: "extensions",
+    name: "Dépose + repose Weft / Medusa Weft",
+    description: "J'enlève tes wefts et je les repose au plus près de la racine. Boucles, wavy ou lissé offert.",
+    durationMin: 90,
+    deposit: 30,
+    // ⚠️ Prix provisoire = dépose + pose de la grille. À confirmer par Sarah.
+    variants: [
+      { id: "hairbysd", label: "Extensions achetées chez Hair by SD", price: 100 },
+      { id: "exterieur", label: "Extensions achetées ailleurs", price: 150 },
     ],
   }),
   withVariants({
@@ -231,7 +245,7 @@ export const services: Service[] = [
     category: "soins",
     name: "Soin SOS",
     description: "Soin réparateur intense pour cheveux abîmés ou sensibilisés.",
-    durationMin: 90,
+    durationMin: 120,
     price: 120,
     deposit: 30,
   },
